@@ -6,14 +6,14 @@ const Layout = ({ children }) => {
       <div
         style={{
           display: "flex",
-          border: "2px solid red",
+        //  border: "2px solid red",
         }}
       >
         <div
           style={{
             width: "25rem",
             display: "grid",
-            border: "5px solid black",
+        //    border: "5px solid black",
           }}
         >
           <h1>stable across different pages</h1>
@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
           style={{
             width: "25rem",
             display: "flex",
-            border: "5px solid black",
+           // border: "5px solid black",
             alignContent: "center",
             textAlign: "center",
             justifyContent: "center",

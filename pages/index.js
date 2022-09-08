@@ -6,7 +6,10 @@ const index = () => {
     <>
       <HeadComp title="Home"></HeadComp>
 
-      <div>index</div>
+      <div>
+        <h1>Index</h1>
+        <p>welcome to the home</p>
+      </div>
     </>
   );
 };

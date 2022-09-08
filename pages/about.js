@@ -5,7 +5,8 @@ const about = () => {
   return (
     <div>
       <HeadComp title="About"></HeadComp>
-      <h1>in the process of creating, by Gökay Demirel</h1>
+
+      <h3>in the process of creating, by Gökay Demirel</h3>
     </div>
   );
 };
