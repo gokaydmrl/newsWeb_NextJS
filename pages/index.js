@@ -1,5 +1,6 @@
 import HeadComp from "../components/HeadComp";
 import React from "react";
+import Link from "next/link";
 
 const index = ({ news }) => {
   return (
@@ -14,6 +15,7 @@ const index = ({ news }) => {
             <div key={n._id}>
               <h3>{n.title} </h3>
               <p>{n.content} </p>
+              <Link href={`http://localhost:3000/haber/${n._id}`}>oku</Link>
             </div>
           );
         })}
