@@ -1,5 +1,7 @@
 import HeadComp from "../components/HeadComp";
 import React from "react";
+import NewsStyles from "../styles/NewsStyles.module.css";
+import { Carousel } from "flowbite-react";
 import Link from "next/link";
 
 const index = ({ news }) => {
@@ -8,17 +10,22 @@ const index = ({ news }) => {
       <HeadComp title="Home"></HeadComp>
 
       <div>
-        <h1>Home</h1>
-        <p>welcome to the home</p>
-        {news.map((n) => {
-          return (
-            <div key={n._id}>
-              <h3>{n.title} </h3>
-              <p>{n.content} </p>
-              <Link href={`http://localhost:3000/haber/${n._id}`}>oku</Link>
-            </div>
-          );
-        })}
+        <h1 className="underline">Home</h1>
+        <p className="text-3xl font-bold underline">welcome to the home</p>
+
+        <div className="h-56 sm:h-64 xl:h-80 2xl:h-96">
+          <Carousel>
+            <Link href={`haber/${news[0]._id}`}>
+              <div
+                className={`${NewsStyles.imaj} flex h-full items-center justify-center bg-red-400 dark:bg-gray-700 dark:text-white`}
+              >
+                <div className={NewsStyles.box}>
+                  <h3>{news[0].title} </h3>
+                </div>
+              </div>
+            </Link>
+          </Carousel>
+        </div>
       </div>
     </>
   );

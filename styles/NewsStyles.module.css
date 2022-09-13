@@ -1,0 +1,24 @@
+.news {
+  border-bottom: 1px solid black;
+  margin: 3rem;
+}
+
+.news:hover {
+  background-color: grey;
+}
+
+.home {
+  display: flex;
+}
+
+.imaj {
+  background-image: url("https://strongcitiesnetwork.org/en/wp-content/uploads/sites/5/2020/08/5-aug_beirut-explosion-1.jpg");
+  opacity: 0.6;
+}
+.imaj:hover{
+  opacity: 1;
+}
+.box {
+  background-color: wheat;
+  padding: 1rem;
+}
