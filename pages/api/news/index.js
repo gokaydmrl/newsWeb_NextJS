@@ -15,4 +15,17 @@ handler.get(async (req, res) => {
   }
 });
 
+// handler.db.collection("developments").save({ title: "abc", content: "def" });
+
+// async (req, res) => {
+//   try {
+//     await req.db
+//       .collection("developments")
+//       .save({ title: "abc", content: "def" });
+//     //  console.log("docss", docss);
+//   } catch (error) {
+//     console.log("error saver", error);
+//   }
+// };
+
 export default handler;

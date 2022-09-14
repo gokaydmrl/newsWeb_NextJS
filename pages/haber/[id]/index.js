@@ -2,17 +2,25 @@ import Link from "next/link";
 import HeadComp from "../../../components/HeadComp";
 
 import React from "react";
+import { useRouter } from "next/router";
 
 const Haber = ({ haber }) => {
+  const router = useRouter()
+    console.log("hbr",router.pathname);;
+
   console.log("this haber", haber);
   return (
-    <div>
+    <div style={{ textAlign: "center", justifyContent: "center" }}>
       <HeadComp title={haber[0].title}></HeadComp>
 
       <h3> haber</h3>
-      <h5>{haber[0].title} </h5>
+
+      <blockquote class="text-xl italic font-semibold text-gray-900 dark:text-white">
+
+        <h5>{haber[0].title} </h5>
+        </blockquote>
       <p>{haber[0].content} </p>
-      <Link href="/">Go to Home </Link>
+      <Link href="/home">Go to Home </Link>
     </div>
   );
 };
@@ -45,5 +53,6 @@ export const getStaticPaths = async () => {
     fallback: false,
   };
 };
+
 
 export default Haber;

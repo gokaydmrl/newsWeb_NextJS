@@ -14,11 +14,31 @@
 .imaj {
   background-image: url("https://strongcitiesnetwork.org/en/wp-content/uploads/sites/5/2020/08/5-aug_beirut-explosion-1.jpg");
   opacity: 0.6;
+  background-size: cover; /* <------ */
+  background-repeat: no-repeat;
+  background-position: center center;
 }
-.imaj:hover{
+.imaj:hover {
   opacity: 1;
 }
+
 .box {
   background-color: wheat;
   padding: 1rem;
+}
+
+.box2 {
+  background-color: wheat;
+  padding: 1rem;
+}
+
+.imaj2 {
+  background-image: url("https://cdnuploads.aa.com.tr/uploads/Contents/2021/10/12/thumbs_b_c_82a690515d189f81f2b36208546614eb.jpg?v=132512");
+  opacity: 0.6;
+  background-size: cover; /* <------ */
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.imaj2:hover {
+  opacity: 1;
 }

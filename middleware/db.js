@@ -3,7 +3,7 @@ import nextConnect from "next-connect";
 
 const { default: mongoose } = require("mongoose");
 
-const client = new MongoClient(process.env.MONGO_URI, {
+export const client = new MongoClient(process.env.MONGO_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
