@@ -1,14 +1,39 @@
 import Link from "next/link";
 import HeadComp from "../../../components/HeadComp";
-
+import useSWR from "swr";
 import React from "react";
 import { useRouter } from "next/router";
 
 const Haber = ({ haber }) => {
-  const router = useRouter()
-    console.log("hbr",router.pathname);;
+  // const fetcher = async () => {
+  //   try {
+  //     const resCom = await fetch("http://localhost:3000/api/comments");
+  //     const ops = await resCom.json();
+  //     console.log("ops", ops);
+  //   } catch (error) {
+  //     console.log("error", error);
+  //   }
+  // };
+
+  const fetcher = (url) => fetch(url).then((res) => res.json());
+
+  const url = "http://localhost:3000/api/comments";
+
+  const { data, error } = useSWR(url, fetcher);
+
+  console.log("data", data);
+
+  const router = useRouter();
+  console.log("hbr", router.query);
 
   console.log("this haber", haber);
+
+  const filtered = data?.filter((c) => {
+    return c.categoryID === router.query.id;
+  });
+
+  console.log("filtered", filtered);
+
   return (
     <div style={{ textAlign: "center", justifyContent: "center" }}>
       <HeadComp title={haber[0].title}></HeadComp>
@@ -16,10 +41,19 @@ const Haber = ({ haber }) => {
       <h3> haber</h3>
 
       <blockquote class="text-xl italic font-semibold text-gray-900 dark:text-white">
-
         <h5>{haber[0].title} </h5>
-        </blockquote>
+      </blockquote>
       <p>{haber[0].content} </p>
+      <br></br>
+      {filtered.map((op) => {
+        return (
+          <div key={op._id}>
+            <p>{op.fullName} </p>
+            <p>{op.opinion} </p>
+          </div>
+        );
+      })}
+      <br></br>
       <Link href="/home">Go to Home </Link>
     </div>
   );
@@ -53,6 +87,5 @@ export const getStaticPaths = async () => {
     fallback: false,
   };
 };
-
 
 export default Haber;
