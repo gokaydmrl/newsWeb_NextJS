@@ -1,11 +1,13 @@
 import Link from "next/link";
 import HeadComp from "../../../components/HeadComp";
-import useSWR from "swr";
+import useSWR, { useSWRConfig } from "swr";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 
 const Haber = ({ haber }) => {
   const router = useRouter();
+
+  const { mutate } = useSWRConfig();
 
   const [comm, setComm] = useState({
     fullName: "",
@@ -16,6 +18,12 @@ const Haber = ({ haber }) => {
   const handleChange = (e) => {
     setComm({ ...comm, [e.target.name]: e.target.value });
   };
+
+  const fetcher = (url) => fetch(url).then((res) => res.json());
+
+  const url = "http://localhost:3000/api/comments";
+
+  const { data, error } = useSWR(url, fetcher);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,28 +36,19 @@ const Haber = ({ haber }) => {
         method: `POST`,
         body: JSON.stringify(comm),
       });
+      mutate(url);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const fetcher = (url) => fetch(url).then((res) => res.json());
-
-  const url = "http://localhost:3000/api/comments";
-
-  const { data, error } = useSWR(url, fetcher);
-
   console.log("data", data);
 
-  console.log("hbr", router.query);
-
-  console.log("this haber", haber);
-
-  const filtered = data?.filter((c) => {
-    return c.categoryID === router.query.id;
-  });
-
-  console.log("filtered", filtered);
+    const filtered = data?.filter((c) => {
+      return c.categoryID === router.query.id;
+    });
+  
+    console.log("filtered", filtered);
 
   return (
     <div style={{ textAlign: "center", justifyContent: "center" }}>
@@ -62,14 +61,7 @@ const Haber = ({ haber }) => {
       </blockquote>
       <p>{haber[0].content} </p>
       <br></br>
-      {filtered?.map((op) => {
-        return (
-          <div key={op._id}>
-            <p>{op.fullName} </p>
-            <p>{op.opinion} </p>
-          </div>
-        );
-      })}
+
       <br></br>
       <Link href="/home">Go to Home </Link>
 
@@ -90,6 +82,15 @@ const Haber = ({ haber }) => {
           <button>submit</button>
         </form>
       </div>
+
+      {filtered?.map((op) => {
+        return (
+          <div key={op._id}>
+            <p>{op.fullName} </p>
+            <p>{op.opinion} </p>
+          </div>
+        );
+      })}
     </div>
   );
 };
