@@ -3,6 +3,10 @@ import HeadComp from "../../../components/HeadComp";
 import useSWR, { useSWRConfig } from "swr";
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+import { Card } from "flowbite-react";
+import { Label } from "flowbite-react";
+import { Textarea, TextInput } from "flowbite-react";
+import { Button } from "flowbite-react";
 
 const Haber = ({ haber }) => {
   const router = useRouter();
@@ -44,11 +48,11 @@ const Haber = ({ haber }) => {
 
   console.log("data", data);
 
-    const filtered = data?.filter((c) => {
-      return c.categoryID === router.query.id;
-    });
-  
-    console.log("filtered", filtered);
+  const filtered = data?.filter((c) => {
+    return c.categoryID === router.query.id;
+  });
+
+  console.log("filtered", filtered);
 
   return (
     <div style={{ textAlign: "center", justifyContent: "center" }}>
@@ -67,28 +71,53 @@ const Haber = ({ haber }) => {
 
       <div>
         <form onSubmit={handleSubmit}>
-          <input
-            placeholder="fullName"
-            onChange={handleChange}
-            name="fullName"
-            value={comm.fullName}
-          />
-          <input
-            placeholder="opinion"
-            onChange={handleChange}
-            name="opinion"
-            value={comm.opinion}
-          />
-          <button>submit</button>
+          <div>
+            <div className="mb-2 block">
+              <Label htmlFor="small" value="Your Name" />
+            </div>
+            <TextInput
+              id="small"
+              type="text"
+              sizing="sm"
+              placeholder="fullName"
+              onChange={handleChange}
+              name="fullName"
+              value={comm.fullName}
+            />
+          </div>
+
+          <div id="textarea">
+            <div className="mb-2 block">
+              <Label htmlFor="comment" value="Your opinion" />
+            </div>
+
+            <Textarea
+              id="comment"
+              required={true}
+              rows={4}
+              placeholder="opinion"
+              onChange={handleChange}
+              name="opinion"
+              value={comm.opinion}
+            />
+          </div>
+
+          <Button color="purple" pill={true} type="submit">
+            Submit
+          </Button>
         </form>
       </div>
 
       {filtered?.map((op) => {
         return (
-          <div key={op._id}>
-            <p>{op.fullName} </p>
-            <p>{op.opinion} </p>
-          </div>
+          <Card style={{ textAlign: "left" }} key={op._id}>
+            <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              {op.fullName}
+            </h5>
+            <p className="font-normal text-gray-700 dark:text-gray-400">
+              {op.opinion}
+            </p>
+          </Card>
         );
       })}
     </div>

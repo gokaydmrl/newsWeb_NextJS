@@ -1,8 +1,11 @@
 .footer {
-  background-color: paleturquoise;
+  background-color: rgb(154, 172, 189);
   padding: 3rem;
 }
 
 .footerContainer {
   margin-top: 10rem;
+}
+.footerBrand {
+  color: bisque;
 }

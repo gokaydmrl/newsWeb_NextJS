@@ -4,20 +4,15 @@ import { Footer } from "flowbite-react";
 
 const FooterComp = () => {
   return (
-    // <div className={footerStyles.footer}>
-    //   <h3> Footer</h3>
-    //   <br></br>
-    //   <h3> Footer</h3>
-    //   <br></br>
-    //   <h3> Footer</h3>
-    //       <br></br>
-    //       <h2>by Gökay Demire</h2>
-    // </div>
+   
     <div className={`${footerStyles.footerContainer}`}>
       <Footer>
         <div className={`${footerStyles.footer} w-full`}>
           <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
-            <div>
+            <div
+              className={footerStyles.footerBrand}
+              style={{ color: "white" }}
+            >
               <Footer.Brand
                 href="https://lilmashriq.com"
                 // src="https://flowbite.com/docs/images/logo.svg"

@@ -8,11 +8,15 @@ const Nav = () => {
   const router = useRouter();
   console.log(router);
   return (
-    <div style={{marginBottom:"4rem", marginTop:"2rem"}}>
-      <Navbar fluid={true} rounded={true}>
+    <div
+      style={{
+        marginBottom: "4rem",
+        marginTop: "2rem",
+      }}
+    >
+      <Navbar className="bg-black-900" fluid={true} rounded={true}>
         <Navbar.Brand href="https://flowbite.com/">
-         
-          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white ">
             LilMashriq
           </span>
         </Navbar.Brand>
@@ -30,9 +34,9 @@ const Nav = () => {
           >
             About
           </Navbar.Link>
-          <Navbar.Link href="/navbars">Services</Navbar.Link>
-          <Navbar.Link href="/navbars">Pricing</Navbar.Link>
-          <Navbar.Link href="/navbars">Contact</Navbar.Link>
+          <Navbar.Link href="/navbars">by</Navbar.Link>
+          <Navbar.Link href="/navbars">Gökay</Navbar.Link>
+          <Navbar.Link href="/navbars"> Demirel</Navbar.Link>
         </Navbar.Collapse>
       </Navbar>
     </div>

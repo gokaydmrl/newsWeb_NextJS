@@ -26,4 +26,11 @@ const middleware = nextConnect();
 
 middleware.use(database);
 
+const db = client.db();
+
+// db.collection("developments").insertOne({
+//   title: "abc",
+//   content: "zxcqwe",
+// });
+
 export default middleware;

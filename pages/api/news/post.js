@@ -4,16 +4,17 @@ const handler = nextConnect();
 
 handler.use(middleware);
 
-handler.get(async (req, res) => {
+handler.post(async (req, res) => {
   try {
-    //   console.log("req db", req.db);
-    let doc = await req.db.collection("developments").find({}).toArray();
-    //  console.log("doc", doc);
-    res.json(doc);
+    console.log("çalıştı news/post");
+    let docPost = await req.db.collection("developments").insertOne({
+      title: "abc",
+      content: "def",
+    });
+    res.json(docPost);
   } catch (error) {
     console.log("error", error);
   }
 });
-
 
 export default handler;

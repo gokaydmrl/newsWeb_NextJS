@@ -6,7 +6,7 @@ handler.use(middleware);
 
 handler.post(async (req, res) => {
   const { fullName, opinion, categoryID } = JSON.parse(req.body);
-  console.log("req.body", req.body);
+  //  console.log("req.body", req.body);
   console.log("api fullname", fullName);
   console.log("api op", opinion);
   try {
