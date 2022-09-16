@@ -5,7 +5,7 @@ import Nav from "./Nav";
 const Layout = ({ children }) => {
   return (
     <>
-      <div class="container mx-auto ">
+      <div className="container mx-auto ">
         <Nav />
         {children}
         <FooterComp />
