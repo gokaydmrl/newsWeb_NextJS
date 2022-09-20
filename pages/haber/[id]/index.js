@@ -63,13 +63,18 @@ const Haber = ({ haber }) => {
       <blockquote className="text-xl italic font-semibold text-gray-900 dark:text-white">
         <h5>{haber[0].title} </h5>
       </blockquote>
-      <p>{haber[0].content} </p>
+      {haber[0].content.split(".").map((i, a) => (
+        <p style={{
+          textAlign: "left",
+          textIndent:"1rem"
+        }} key={a}>{i}. </p>
+      ))}
       <br></br>
 
       <br></br>
       <Link href="/home">Go to Home </Link>
 
-      <div>
+      <div style={{ marginTop: "1rem" }}>
         <form onSubmit={handleSubmit}>
           <div>
             <div className="mb-2 block">
@@ -102,7 +107,12 @@ const Haber = ({ haber }) => {
             />
           </div>
 
-          <Button color="purple" pill={true} type="submit">
+          <Button
+            style={{ marginTop: "1rem" }}
+            color="purple"
+            pill={true}
+            type="submit"
+          >
             Submit
           </Button>
         </form>
@@ -110,14 +120,23 @@ const Haber = ({ haber }) => {
 
       {filtered?.map((op) => {
         return (
-          <Card style={{ textAlign: "left" }} key={op._id}>
-            <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-              {op.fullName}
-            </h5>
-            <p className="font-normal text-gray-700 dark:text-gray-400">
-              {op.opinion}
-            </p>
-          </Card>
+          <div key={op._id} className=" hover:shadow-2xl">
+            <Card style={{ textAlign: "left", marginTop: "1rem" }}>
+              <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">
+                {op.fullName}
+              </h5>
+              <p className="font-normal text-gray-700 dark:text-gray-400">
+                {op.opinion}
+              </p>
+              <Button
+                style={{ marginLeft: "auto" }}
+                color="failure"
+                pill={true}
+              >
+                Delete
+              </Button>
+            </Card>
+          </div>
         );
       })}
     </div>

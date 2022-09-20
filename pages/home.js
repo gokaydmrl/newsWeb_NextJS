@@ -43,7 +43,7 @@ const index = ({ news }) => {
                 onClick={() => setLoading(true)}
                 className={`${NewsStyles.imaj2} flex h-full items-center justify-center bg-red-400 dark:bg-gray-700 dark:text-white`}
               >
-                <div className={NewsStyles.box2}>
+                <div style={{opacity:"1"}} className={NewsStyles.box2}>
                   <h3>{news[1].title} </h3>
                 </div>
               </div>
