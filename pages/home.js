@@ -67,12 +67,16 @@ const index = ({ news }) => {
 export default index;
 
 export const getStaticProps = async () => {
-  const res = await fetch(`http://localhost:3000/api/news`);
-  const news = await res.json();
+  try {
+    const res = await fetch(`http://localhost:3000/api/news`);
+    const news = await res.json();
 
-  return {
-    props: {
-      news,
-    },
-  };
+    return {
+      props: {
+        news,
+      },
+    };
+  } catch (error) {
+    console.log(error);
+  }
 };
