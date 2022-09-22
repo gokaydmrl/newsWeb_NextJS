@@ -7,14 +7,22 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 const Nav = () => {
   const [search, setSearch] = useState(false);
-
+  const [key, setKey] = useState("");
   const router = useRouter();
   console.log(router);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    router.push(`/search/${key}`);
+  };
+
   return (
     <div
       style={{
         marginBottom: "4rem",
         marginTop: "2rem",
+        position:"sticky",
+        top:0
       }}
     >
       <Navbar className="bg-black-900" fluid={true} rounded={true}>
@@ -48,7 +56,7 @@ const Nav = () => {
             {" "}
             <spam>
               {search ? (
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div>
                     <CloseIcon
                       onClick={() => setSearch(false)}
@@ -59,6 +67,8 @@ const Nav = () => {
                       }}
                     />
                     <input
+                      onChange={(e) => setKey(e.target.value)}
+                      value={key}
                       placeholder="Search..."
                       style={{
                         color: "black",
@@ -69,9 +79,16 @@ const Nav = () => {
                         maxWidth: "5rem",
                       }}
                     />
-                    <SearchOutlinedIcon
-                      style={{ cursor: "pointer", color: "blue" }}
-                    />
+                    <label style={{}}>
+                      <button type="submit">
+                        <SearchOutlinedIcon
+                          style={{
+                            cursor: "pointer",
+                            color: "blue",
+                          }}
+                        />
+                      </button>
+                    </label>
                   </div>
                 </form>
               ) : (

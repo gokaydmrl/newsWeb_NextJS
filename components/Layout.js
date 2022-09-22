@@ -7,7 +7,6 @@ const Layout = ({ children }) => {
   return (
     <>
       <div className="md:container md:mx-auto lg:px-1 px-4">
-        <HeaderPhoto />
         <Nav />
         {children}
         <FooterComp />
