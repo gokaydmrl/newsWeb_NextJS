@@ -5,9 +5,18 @@ import { Carousel } from "flowbite-react";
 import Link from "next/link";
 import { useState } from "react";
 import { Spinner } from "flowbite-react";
+import { useQuery } from "@tanstack/react-query";
 
 const index = ({ news }) => {
   const [loading, setLoading] = useState(false);
+
+  // const fetcher = async () => {
+  //   await fetch("http://localhost:3000/api/news").then((res) => {
+  //     res.json();
+  //   });
+  // };
+
+  // const { isLoading, isSuccess, data } = useQuery(["news"], fetcher);
 
   return (
     <>
@@ -43,7 +52,7 @@ const index = ({ news }) => {
                 onClick={() => setLoading(true)}
                 className={`${NewsStyles.imaj2} flex h-full items-center justify-center bg-red-400 dark:bg-gray-700 dark:text-white`}
               >
-                <div style={{opacity:"1"}} className={NewsStyles.box2}>
+                <div style={{ opacity: "1" }} className={NewsStyles.box2}>
                   <h3>{news[1].title} </h3>
                 </div>
               </div>
