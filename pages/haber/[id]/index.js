@@ -46,7 +46,7 @@ const Haber = ({ haber }) => {
     }
   };
 
-  console.log("data", data);
+  console.log("comments data", data);
 
   const filtered = data?.filter((c) => {
     return c.categoryID === router.query.id;
@@ -64,10 +64,15 @@ const Haber = ({ haber }) => {
         <h5>{haber[0].title} </h5>
       </blockquote>
       {haber[0].content.split(".").map((i, a) => (
-        <p style={{
-          textAlign: "left",
-          textIndent:"1rem"
-        }} key={a}>{i}. </p>
+        <p
+          style={{
+            textAlign: "left",
+            textIndent: "1rem",
+          }}
+          key={a}
+        >
+          {i}.{" "}
+        </p>
       ))}
       <br></br>
 

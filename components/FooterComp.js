@@ -9,17 +9,13 @@ const FooterComp = () => {
       <Footer>
         <div className={`${footerStyles.footer} w-full`}>
           <div className="grid w-full justify-between sm:flex sm:justify-between md:flex md:grid-cols-1">
-            <div
-              className={footerStyles.footerBrand}
-              style={{ color: "white" }}
-            >
+            
               <Footer.Brand
                 href="https://lilmashriq.com"
                 // src="https://flowbite.com/docs/images/logo.svg"
                 //  alt="Flowbite Logo"
                 name="LilMashriq"
               />
-            </div>
 
             <div className="grid grid-cols-2 gap-8 sm:mt-4 sm:grid-cols-3 sm:gap-6">
               <div>
