@@ -8,8 +8,9 @@ import { Spinner } from "flowbite-react";
 import { dehydrate, QueryClient, useQuery } from "@tanstack/react-query";
 import fetcher from "../query/fetchDataQuery";
 
-const index = (props) => {
-  console.log("props", props.data);
+const index = (dehydratedState) => {
+  console.log("dehydratedState", dehydratedState);
+
   const [loading, setLoading] = useState(false);
 
   // const fetcher = async () => {
@@ -93,13 +94,19 @@ export default index;
 //   }
 // };
 
-export const getStaticrops = async () => {
+export const getStaticProps = async () => {
   const queryClient = new QueryClient();
+  let dehydratedState = {};
 
   try {
     await queryClient.prefetchQuery(["news"], fetcher);
-    return { props: { dehydratedState: dehydrate(queryClient) } };
+    dehydratedState = dehydrate(queryClient);
+    console.log("dehydratedState", dehydratedState);
+    queryClient.clear();
   } catch (error) {
     console.log(error);
   }
+  return {
+    props: { dehydratedState },
+  };
 };
